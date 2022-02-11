@@ -4,11 +4,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { motion } from "framer-motion";
 import { Game } from "../components/Games";
 import styled from "styled-components";
-import { useLocation } from "react-router-dom";
+import { useLocation,useParams } from "react-router-dom";
 import GameDetail from "../components/GameDetails";
 export const Home = () => {
+
   const location=useLocation();
   const pathId=location.pathname.split('/')[2]
+  // console.log(pathId);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(LoadGames());
