@@ -3,6 +3,7 @@ const baseURL=`https://api.rawg.io/api/games?key=${process.env.REACT_APP_KEY}`
 
 
 
+
 const getCurrentMonth=()=>{
     const month = new Date().getMonth()+1;
     if(month<10){
@@ -41,7 +42,10 @@ export const popular_gamesURL=()=>`${baseURL}${popular_games}`
 export const upcoming_gamesURL=()=>`${baseURL}${upcoming_games}`
 export const new_gamesURL=()=>`${baseURL}${new_games}`
 
+// Game Details
 
-//  const popular_gamesURL=()=>`${baseURL}${popular_games}`
-//  console.log(popular_gamesURL());
+export const gameDetailsURL=(gameID)=>  `https://api.rawg.io/api/games/${gameID}?key=${process.env.REACT_APP_KEY}`
+export const gameSnapURL=(gameID)=>  `https://api.rawg.io/api/games/${gameID}/screenshots?key=${process.env.REACT_APP_KEY}`
+
+
 
