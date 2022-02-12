@@ -40,5 +40,9 @@ a{
     text-decoration:none;
     color:#362c6e;
 }
+
+@media screen and (max-width:500px) {
+    font-size: 12px;
+}
 `;
 export default GlobalStyles

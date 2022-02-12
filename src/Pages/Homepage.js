@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import LoadGames from "../actions/GamesAction";
 import { useDispatch, useSelector } from "react-redux";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence, AnimateSharedLayout } from "framer-motion";
 import { Game } from "../components/Games";
 import styled from "styled-components";
 import { useLocation } from "react-router-dom";
@@ -18,7 +18,8 @@ export const Home = () => {
 
   return (
     <GameList>
-      {pathId && <GameDetail />}
+      <AnimateSharedLayout type="crossfade">
+      <AnimatePresence>{pathId && <GameDetail pathId={pathId} />}</AnimatePresence>
       <h2>Popular Games</h2>
       <Games>
         {popular.map((game) => (
@@ -55,6 +56,7 @@ export const Home = () => {
           />
         ))}
       </Games>
+      </AnimateSharedLayout>
     </GameList>
   );
 };
