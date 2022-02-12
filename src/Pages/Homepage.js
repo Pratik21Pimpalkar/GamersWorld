@@ -14,12 +14,25 @@ export const Home = () => {
   useEffect(() => {
     dispatch(LoadGames());
   }, [dispatch]);
-  const { popular, newGames, upcoming } = useSelector((state) => state.games);
+  const { popular, newGames, upcoming ,search} = useSelector((state) => state.games);
 
   return (
     <GameList>
       <AnimateSharedLayout type="crossfade">
       <AnimatePresence>{pathId && <GameDetail pathId={pathId} />}</AnimatePresence>
+      {search.length ? <div>
+      <h2>Searched Games Results</h2>
+      <Games>
+        {search.map((game) => (
+          <Game
+            name={game.name}
+            released={game.released}
+            id={game.id}
+            key={game.id}
+            image={game.background_image}
+          />
+        ))}
+      </Games></div>:""}
       <h2>Popular Games</h2>
       <Games>
         {popular.map((game) => (
@@ -66,11 +79,17 @@ const GameList = styled(motion.div)`
   h2 {
     padding: 4rem 0rem;
   }
+
+ @media screen and (max-width:400px){
+   padding: 0;
+ }
 `;
 const Games = styled(motion.div)`
+
   min-height: 90vh;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   grid-column-gap: 3rem;
   grid-row-gap: 6rem;
+  
 `;

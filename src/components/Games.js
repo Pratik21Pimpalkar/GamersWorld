@@ -36,4 +36,5 @@ const StyleGame = styled(motion.div)`
     height: 100%;
     object-fit: cover;
   }
+
 `;

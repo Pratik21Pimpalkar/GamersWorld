@@ -47,6 +47,7 @@ export const new_gamesURL=()=>`${baseURL}${new_games}`
 
 export const gameDetailsURL=(gameID)=>  `https://api.rawg.io/api/games/${gameID}?key=${process.env.REACT_APP_KEY}`
 export const gameSnapURL=(gameID)=>  `https://api.rawg.io/api/games/${gameID}/screenshots?key=${process.env.REACT_APP_KEY}`
+// Search Games
 
-
+export const searchGamesURL=(gameName)=>`https://api.rawg.io/api/games?key=${process.env.REACT_APP_KEY}&search=${gameName}&page_size=12`
 

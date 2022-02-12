@@ -152,7 +152,7 @@ const Stats = styled(motion.div)`
 `;
 const Platforms = styled(motion.div)`
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: wrap ;
   justify-content: space-evenly;
   align-items: center;
   overflow: hidden;
