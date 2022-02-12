@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 
 import { fetchsearch } from "../actions/GamesAction";
 import { useDispatch } from "react-redux";
+import { fadeIn } from "../Animation/animation";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -21,7 +22,7 @@ const Header = () => {
       dispatch({type:"CLEAR_SEARCHGAMES"})
   }
   return (
-    <Styleheader>
+    <Styleheader  variants={fadeIn} transition="transistion" initial="hidden" animate="show">
       <Logo onClick={clearSearch}>
         <img src="https://img.icons8.com/external-icongeek26-outline-gradient-icongeek26/100/000000/external-gamer-game-development-icongeek26-outline-gradient-icongeek26.png" />
         <h3>Gamer World</h3>
@@ -66,7 +67,8 @@ const SearchBar = styled(motion.div)`
     width: 25rem;
     padding: 0.5rem 0.3rem;
     border-radius: 0.2rem;
-    outline: none;
+    outline: none;    border: none;
+    box-shadow: -1px 1px 20px 0px #356aff;
   }
   button {
       cursor: pointer;
@@ -74,8 +76,11 @@ const SearchBar = styled(motion.div)`
     padding: 0.6rem;
     border-radius: 0.2rem;
     border: none;
-    background-color: pink;
-    border: 1px solid darkred;
+    background-color: #180096;
+    border: 1px solid white;
+    box-shadow: -1px 1px 20px 0px #356aff;
+    color: white;
+    font-weight: 500;
   }
 `;
 export default Header;
