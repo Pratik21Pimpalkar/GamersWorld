@@ -3,7 +3,8 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 import { useSelector } from "react-redux";
 import {useNavigate} from 'react-router-dom'
-
+import { SmallImage } from "../resize";
+import parse from 'html-react-parser'
 const GameDetails = () => {
   const Navigate=useNavigate()
   const { game, snap,loading } = useSelector((state) =>  state.details)
@@ -41,11 +42,12 @@ const GameDetails = () => {
           <img src={game.background_image} alt={game.name} srcSet="" />
         </Media>
         <Description className="description">
-          <p>{game.description}</p>
+         {parse(game.description)} 
+     
         </Description>
         <div className="gallery">
           {snap.results.map((snap) => (
-            <img key={snap.id} src={snap.image} alt="" />
+            <img key={snap.id} src={SmallImage(snap.image,640)} alt="" />
           ))}
           
         </div>

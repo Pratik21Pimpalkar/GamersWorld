@@ -30,7 +30,7 @@ const currentDay= getCurrentDay();
 const currentDate=`${currentYear}-${currentMonth}-${currentDay}`
 const lastYear=`${currentYear-1}-${currentMonth}-${currentDay}`
 const nextYear=`${currentYear+1}-${currentMonth}-${currentDay}`
-console.log(currentDate,lastYear,nextYear)
+// console.log(currentDate,lastYear,nextYear)
 // console.log(currentDate);
 
 // const popular_games
