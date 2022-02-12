@@ -24,14 +24,14 @@ h2{
     font-family: 'Montserrat', sans-serif;
 }
 h3{
-    font-size:1.3rem;
+    font-size:1.1rem;
     font-family: 'Poppins', sans-serif;
     color: #362c6e;
     padding:0.6rem 0;
 
 }
 p{
-    font-size:1.2rem;
+    font-size:1rem;
     line-height:200%;
     padding:0.2rem 0;
     color: grey;

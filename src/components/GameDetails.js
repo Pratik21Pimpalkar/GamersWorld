@@ -2,12 +2,24 @@ import React from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import { useSelector } from "react-redux";
+import {useNavigate} from 'react-router-dom'
 
 const GameDetails = () => {
-  const { game, snap } = useSelector((state) =>  state.details)
-
+  const Navigate=useNavigate()
+  const { game, snap,loading } = useSelector((state) =>  state.details)
+  const exitDetailHandler=(e)=>{
+      const element =e.target
+      if(element.classList.contains("card-shadow")){
+          document.body.style.overflow="auto";
+          Navigate('/')
+      }
+  }
   return (
-    <CardShadow className="card-shadow">
+    <>
+    {
+      !loading &&(
+    
+    <CardShadow className="card-shadow" onClick={exitDetailHandler}>
       <Detail className="detail">
         <Stats className="stats">
           <div className="rating">
@@ -38,7 +50,8 @@ const GameDetails = () => {
           
         </div>
       </Detail>
-    </CardShadow>
+    </CardShadow>)}
+    </>
   );
 };
 
@@ -48,6 +61,8 @@ const CardShadow = styled(motion.div)`
   overflow-y: scroll;
   background: rgba(0, 0, 0, 0.5);
   position: fixed;
+  display: flex;
+  justify-content: center;
   top: 0;
   left: 0;
   &::-webkit-scrollbar {
@@ -62,12 +77,12 @@ const CardShadow = styled(motion.div)`
 `;
 
 const Detail = styled(motion.div)`
-  width: 80%;
+  width: 60%;
   border-radius: 1rem;
   padding: 2rem 6rem;
   background-color: white;
   position: absolute;
-  left: 5%;
+
   color: black;
   img {
     width: 100%;

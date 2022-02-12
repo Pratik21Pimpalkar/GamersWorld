@@ -2,6 +2,9 @@ import axios from "axios";
 import { gameDetailsURL, gameSnapURL } from "../API/api";
 
 const loadDetail = (id) => async (disptach) => {
+  disptach({
+    type:"LOADING_DETAIL",
+  })
   const detailData = await axios.get(gameDetailsURL(id));
   const snapData = await axios.get(gameSnapURL(id));
   disptach({

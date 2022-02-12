@@ -4,12 +4,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { motion } from "framer-motion";
 import { Game } from "../components/Games";
 import styled from "styled-components";
-import { useLocation,useParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import GameDetail from "../components/GameDetails";
 export const Home = () => {
-
-  const location=useLocation();
-  const pathId=location.pathname.split('/')[2]
+  const location = useLocation();
+  const pathId = location.pathname.split("/")[2];
   // console.log(pathId);
   const dispatch = useDispatch();
   useEffect(() => {
@@ -19,19 +18,7 @@ export const Home = () => {
 
   return (
     <GameList>
-      {pathId && <GameDetail/> } 
-      <h2>Upcoming Games</h2>
-      <Games>
-        {upcoming.map((game) => (
-          <Game
-            name={game.name}
-            released={game.released}
-            id={game.id}
-            key={game.id}
-            image={game.background_image}
-          />
-        ))}
-      </Games>
+      {pathId && <GameDetail />}
       <h2>Popular Games</h2>
       <Games>
         {popular.map((game) => (
@@ -56,6 +43,18 @@ export const Home = () => {
           />
         ))}
       </Games>
+      <h2>Upcoming Games</h2>
+      <Games>
+        {upcoming.map((game) => (
+          <Game
+            name={game.name}
+            released={game.released}
+            id={game.id}
+            key={game.id}
+            image={game.background_image}
+          />
+        ))}
+      </Games>
     </GameList>
   );
 };
@@ -69,7 +68,7 @@ const GameList = styled(motion.div)`
 const Games = styled(motion.div)`
   min-height: 90vh;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-column-gap: 3rem;
   grid-row-gap: 6rem;
 `;
