@@ -35,7 +35,8 @@ const nextYear=`${currentYear+1}-${currentMonth}-${currentDay}`
 
 // const popular_games
 const popular_games= `&date=${currentDate},${lastYear}&ordering=-added&page_size=12`
-const upcoming_games= `&date=${currentDate},${nextYear}&ordering=-released&page_size=12`
+const upcoming_games= `&date=${currentDate},${nextYear}&ordering=created&page_size=12`
+// const upcoming_games= `&date=${currentDate},${nextYear}&ordering=-released&page_size=12`
 
 const new_games=`&date=${lastYear},${currentDate}&ordering=added&page_size=12`
 

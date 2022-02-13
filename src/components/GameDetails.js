@@ -70,6 +70,9 @@ const GameDetails = ({ pathId }) => {
                 <motion.h3 layoutId={`title ${pathId}`}>{game.name}</motion.h3>
                 <Typography component="legend">Rating</Typography>
                 <Rating name="read-only" value={game.rating} precision={0.1} readOnly />
+                <br />
+                <div className="tag-wrap">
+                {game.tags.map(tag=>((tag.id===31||tag.id===7||tag.id===30)?(<h5 className="tags" key={tag.id}>{tag.name}</h5>):("")))}</div>
               </div>
 
               <Info className="info">
@@ -88,7 +91,7 @@ const GameDetails = ({ pathId }) => {
             <Media className="media">
               <motion.img
                 layoutId={`image ${pathId}`}
-                src={game.background_image}
+                src={SmallImage(game.background_image,640)}
                 alt={game.name}
                 srcSet=""
               />
@@ -151,6 +154,18 @@ const Stats = styled(motion.div)`
   justify-content: space-between;
   .MuiRating-root{
     color:#db0505 !important;
+  }
+  
+  .tags{
+    display: inline-block;
+    margin-top: 0.5rem;
+    margin-left: 0.1rem;
+    padding: 0.4rem;
+    font-size: 0.6rem;
+    background-color: #cdcdcd;
+    border-radius: 0.7rem;
+    text-transform: uppercase;
+    color: #3a3338;
   }
 `;
 const Platforms = styled(motion.div)`

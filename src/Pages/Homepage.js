@@ -57,7 +57,7 @@ export const Home = () => {
           />
         ))}
       </Games>
-      <h2>Upcoming Games</h2>
+      <h2>Other Unique Games</h2>
       <Games>
         {upcoming.map((game) => (
           <Game
