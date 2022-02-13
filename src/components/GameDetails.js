@@ -149,6 +149,9 @@ const Stats = styled(motion.div)`
   }
   align-items: center;
   justify-content: space-between;
+  .MuiRating-root{
+    color:#db0505 !important;
+  }
 `;
 const Platforms = styled(motion.div)`
   display: flex;
