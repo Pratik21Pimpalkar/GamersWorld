@@ -3,19 +3,24 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { popup } from "../Animation/animation";
+import { SmallImage } from "../resize";
 import loadDetail from "../actions/DetailAction";
 export const Game = ({ name, released, image, id }) => {
+  const stringPathId=id.toString();
+  
   // Load Details
   const dispatch = useDispatch();
   const loadDetailHandler = () => {
+    document.body.style.overflow='hidden'
     dispatch(loadDetail(id));
   };
   return (
-    <StyleGame onClick={loadDetailHandler}>
+    <StyleGame  variants={popup} initial="hidden" animate="show" layoutId={stringPathId} onClick={loadDetailHandler}>
       <Link to={`/game/${id}`}>
-        <h3>{name}</h3>
+        <motion.h3 layoutId={`title ${stringPathId}`}>{name}</motion.h3>
         <p>{released}</p>
-        <img src={image} srcSet="" alt={name} />
+        <motion.img layoutId={`image ${stringPathId}`} src={image} srcSet="" alt={name} />
       </Link>
     </StyleGame>
   );
@@ -33,4 +38,5 @@ const StyleGame = styled(motion.div)`
     height: 100%;
     object-fit: cover;
   }
+
 `;

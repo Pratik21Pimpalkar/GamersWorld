@@ -1,6 +1,7 @@
 const initState = {
   game: {platforms:[]},
   snap: {results:[]},
+  loading: true,
 };
 
 const detailReducer = (state = initState, action) => {
@@ -10,7 +11,10 @@ const detailReducer = (state = initState, action) => {
         ...state,
         game: action.payload.game,
         snap: action.payload.snap,
+        loading:false
       };
+      case "LOADING_DETAIL":
+        return{ loading:true}
     default:
       return { ...state };
   }

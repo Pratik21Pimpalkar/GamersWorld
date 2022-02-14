@@ -1,26 +1,29 @@
 import React, { useEffect } from "react";
 import LoadGames from "../actions/GamesAction";
 import { useDispatch, useSelector } from "react-redux";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence, AnimateSharedLayout } from "framer-motion";
 import { Game } from "../components/Games";
 import styled from "styled-components";
 import { useLocation } from "react-router-dom";
-import GameDetail from "../components/GameDetails";
+import GameDetail from "../components/GameDetails";import { fadeIn } from "../Animation/animation";
 export const Home = () => {
-  const location=useLocation();
-  const pathId=location.pathname.split('/')[2]
+  const location = useLocation();
+  const pathId = location.pathname.split("/")[2];
+  // console.log(pathId);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(LoadGames());
   }, [dispatch]);
-  const { popular, newGames, upcoming } = useSelector((state) => state.games);
+  const { popular, newGames, upcoming ,search} = useSelector((state) => state.games);
 
   return (
-    <GameList>
-      {pathId && <GameDetail/> } 
-      <h2>Upcoming Games</h2>
+    <GameList variants={fadeIn} initial="hidden" transition="transistion" animate="show">
+      <AnimateSharedLayout type="crossfade">
+      <AnimatePresence>{pathId && <GameDetail pathId={pathId} />}</AnimatePresence>
+      {search.length ? <div>
+      <h2>Searched Games Results</h2>
       <Games>
-        {upcoming.map((game) => (
+        {search.map((game) => (
           <Game
             name={game.name}
             released={game.released}
@@ -29,7 +32,7 @@ export const Home = () => {
             image={game.background_image}
           />
         ))}
-      </Games>
+      </Games></div>:""}
       <h2>Popular Games</h2>
       <Games>
         {popular.map((game) => (
@@ -54,6 +57,19 @@ export const Home = () => {
           />
         ))}
       </Games>
+      <h2>Other Unique Games</h2>
+      <Games>
+        {upcoming.map((game) => (
+          <Game
+            name={game.name}
+            released={game.released}
+            id={game.id}
+            key={game.id}
+            image={game.background_image}
+          />
+        ))}
+      </Games>
+      </AnimateSharedLayout>
     </GameList>
   );
 };
@@ -63,11 +79,17 @@ const GameList = styled(motion.div)`
   h2 {
     padding: 4rem 0rem;
   }
+
+ @media screen and (max-width:500px){
+   padding: 0 1rem ;
+ }
 `;
 const Games = styled(motion.div)`
+
   min-height: 90vh;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
   grid-column-gap: 3rem;
   grid-row-gap: 6rem;
+ 
 `;
