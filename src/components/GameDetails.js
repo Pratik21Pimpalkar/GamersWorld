@@ -69,7 +69,7 @@ const GameDetails = ({ pathId }) => {
               <div className="rating">
                 <motion.h3 layoutId={`title ${pathId}`}>{game.name}</motion.h3>
                 <Typography component="legend">Rating</Typography>
-                <Rating name="read-only" value={game.rating} precision={0.1} readOnly />
+                <Rating name="read-only" value={game.rating} precision={0.1} readOnly /> <h5>{game.rating}</h5>
                 <br />
                 <div className="tag-wrap">
                 {game.tags.map(tag=>((tag.id===31||tag.id===7||tag.id===30)?(<h5 className="tags" key={tag.id}>{tag.name}</h5>):("")))}</div>
@@ -131,6 +131,9 @@ const CardShadow = styled(motion.div)`
   &::-webkit-scrollbar-track {
     background-color: white;
   }
+  @media screen and (max-width:500px) {
+    align-items: flex-start;
+  }
 `;
 
 const Detail = styled(motion.div)`
@@ -139,10 +142,17 @@ const Detail = styled(motion.div)`
   padding: 2rem 6rem;
   background-color: white;
   position: absolute;
+  
+  
 
   color: black;
   img {
     width: 100%;
+  }
+  @media screen and (max-width:500px) {
+    width:80%;
+  padding: 2rem 1.5rem;
+    
   }
 `;
 const Stats = styled(motion.div)`
@@ -155,7 +165,14 @@ const Stats = styled(motion.div)`
   .MuiRating-root{
     color:#db0505 !important;
   }
-  
+  h5{
+    display: initial;
+    position: relative;
+    color: #db0505;
+    bottom: 7px;
+    font-weight: 1000;
+    padding: 0.2rem;
+  }
   .tags{
     display: inline-block;
     margin-top: 0.5rem;
@@ -166,6 +183,11 @@ const Stats = styled(motion.div)`
     border-radius: 0.7rem;
     text-transform: uppercase;
     color: #3a3338;
+  }
+  @media screen and (max-width:500px) {
+   flex-wrap: wrap;
+   justify-content: center;
+    
   }
 `;
 const Platforms = styled(motion.div)`
@@ -195,6 +217,11 @@ const Info = styled(motion.div)`
   text-align:right;
   h3 {
     padding-bottom: 1rem;
+  }
+  @media screen and (max-width:500px){
+  text-align:center;
+  padding-top: 1rem;
+    
   }
 `;
 const Description = styled(motion.div)`

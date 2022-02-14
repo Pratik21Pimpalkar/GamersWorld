@@ -80,16 +80,16 @@ const GameList = styled(motion.div)`
     padding: 4rem 0rem;
   }
 
- @media screen and (max-width:400px){
-   padding: 0;
+ @media screen and (max-width:500px){
+   padding: 0 1rem ;
  }
 `;
 const Games = styled(motion.div)`
 
   min-height: 90vh;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
   grid-column-gap: 3rem;
   grid-row-gap: 6rem;
-  
+ 
 `;

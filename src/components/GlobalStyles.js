@@ -13,7 +13,9 @@ html{
     &::-webkit-scrollbar-thumb{
         background-color: black;
     }
-    
+    @media screen and (max-width:500px) {
+    font-size: 11px;
+}
 }
 body{
 font-family: 'Ubuntu', sans-serif;
@@ -41,8 +43,6 @@ a{
     color:#362c6e;
 }
 
-@media screen and (max-width:500px) {
-    font-size: 12px;
-}
+
 `;
 export default GlobalStyles

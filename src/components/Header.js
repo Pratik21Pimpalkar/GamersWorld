@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { fetchsearch } from "../actions/GamesAction";
 import { useDispatch } from "react-redux";
 import { fadeIn } from "../Animation/animation";
-
+import logo from "../Assets/Brand-Logo/psyduck.png"
 const Header = () => {
   const dispatch = useDispatch();
   const [input, setinput] = useState("");
@@ -24,8 +24,8 @@ const Header = () => {
   return (
     <Styleheader  variants={fadeIn} transition="transistion" initial="hidden" animate="show">
       <Logo onClick={clearSearch}>
-        <img src="https://img.icons8.com/external-icongeek26-outline-gradient-icongeek26/100/000000/external-gamer-game-development-icongeek26-outline-gradient-icongeek26.png" />
-        <h3>Gamer World</h3>
+        <img src={logo} alt="PSYDUCK"/>
+        <h3>Gamers World</h3>
       </Logo>
       <SearchBar>
         <form>
@@ -39,7 +39,7 @@ const Header = () => {
 
 const Styleheader = styled(motion.div)`
   padding-top: 1rem;
-
+  background-color: black;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
@@ -53,18 +53,22 @@ const Logo = styled(motion.div)`
   flex-direction: column;
   justify-content: center;
   h3 {
-    font-size: 1.9rem;
-    font-family: "Games", sans-serif;
-  }
+    font-size: 2.3rem;
+    font-family: "Bangers", sans-serif;
+    background: -webkit-linear-gradient(#ffffff,#fff000);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    padding:0.5rem  }
   img {
     align-self: center;
     display: flex;
-    width: 4rem;
+    width: 6rem;
   }
 `;
 const SearchBar = styled(motion.div)`
+padding: 1rem;
   input {
-    width: 25rem;
+   min-width:16rem;
     padding: 0.5rem 0.3rem;
     border-radius: 0.2rem;
     outline: none;    border: none;
